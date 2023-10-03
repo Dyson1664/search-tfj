@@ -1,0 +1,12 @@
+{% for mention in mentions %}
+    <p>
+    {% if "Link:" in mention %}
+        {% set parts = mention.split("Link:") %}
+        {{ parts[0]|safe }} 
+        Link: <a href="{{ parts[1].strip() }}" target="_blank">{{ parts[1].strip() }}</a><br><br>
+
+    {% else %}
+        {{ mention|safe }}
+    {% endif %}
+    </p>
+{% endfor %}
